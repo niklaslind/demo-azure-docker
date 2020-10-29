@@ -1,5 +1,23 @@
 #!/bin/bash
 
+# LADR:
+#
+# - Purpose
+#   - Deploy code on azure servers for test and prod
+#   - Setup azure environments to support running docker containers
+#
+# - Focus on learning docker
+#   - Learn docker. Use tools if we need more then docker
+#
+# - Keep it simple:
+#   - Use docker first. Add tools if needed
+#
+# - Infrastructure as code:
+#   - Use comands/config that can be committed to git for manipulating env and deploy
+#   - Clicking buttons in a GUI is hard to share and maintain
+#
+# - Fallback from problem w azure pipeline
+#   - Currently problems w azure pipeline as code => fallback on pure docker
 
 
 export DAD_HOME=~/worklocal/tyrens/demo-azure-docker
