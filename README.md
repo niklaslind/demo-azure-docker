@@ -1,5 +1,5 @@
 
-# demo-azure-docker : Step by Step init Azure and deploy containers to test and prod
+# Step by Step init Azure and deploy containers to test and prod
 
 
 ## Prepare
