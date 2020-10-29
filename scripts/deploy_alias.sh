@@ -5,7 +5,10 @@
 export DAD_HOME=~/worklocal/tyrens/demo-azure-docker
 export DOCKER_USERNAME=niklaslind
 export DOCKER_PASSWORD=${DOCKER_PASSWORD}
-export RESOURCE_GROUP=ty_ResourceGroup_1
+export RESOURCE_GROUP=ty_ResourceGroup_2
+export TEST_CONTEXT=ty_test01
+export PROD_CONTEXT=ty_prod01
+
 
 ty.login() {
     echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin #-p $DOCKER_PASSWORD
@@ -18,8 +21,8 @@ ty.init.createResourceGroup() {
 }
 
 ty.init.createContext() {
-    docker context create aci ty_test01 --resource-group ${RESOURCE_GROUP}
-    docker context create aci ty_prod --resource-group ${RESOURCE_GROUP}   
+    docker context create aci ${TEST_CONTEXT} --resource-group ${RESOURCE_GROUP}
+    docker context create aci ${PROD_CONTEXT} --resource-group ${RESOURCE_GROUP}   
     docker context list
 }
 
@@ -44,14 +47,14 @@ ty.deploy.local() {
 }
 
 ty.deploy.test01() {
-    docker context use ty_test01
+    docker context use ${TEST_CONTEXT}
     docker context list
     docker compose up 
     docker ps
 }
 
 ty.deploy.prod() {
-    docker context use ty_prod
+    docker context use ${PROD_CONTEXT}
     docker context list
     docker compose up 
     docker ps
