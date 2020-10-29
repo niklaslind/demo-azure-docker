@@ -2,7 +2,7 @@
 
 
 
-
+export DAD_HOME=~/worklocal/tyrens/demo-azure-docker
 export DOCKER_USERNAME=niklaslind
 export DOCKER_PASSWORD=${DOCKER_PASSWORD}
 export RESOURCE_GROUP=ty_ResourceGroup_1
@@ -24,7 +24,14 @@ ty.init.createContext() {
 }
 
 
+ty.deploy.build() {
+    docker context use default
+    docker context list
+    docker-compose build
+}
+
 ty.deploy.push() {
+    docker context use default    
     docker-compose push
 }
 
@@ -48,4 +55,9 @@ ty.deploy.prod() {
     docker context list
     docker compose up 
     docker ps
+}
+
+
+ty.test.local() {
+    curl localhost/demo01
 }

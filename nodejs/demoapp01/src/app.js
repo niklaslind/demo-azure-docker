@@ -4,7 +4,7 @@ const express = require('express'),
 
 app.use(bodyParser.json());
 
-app.get('/healthcheck', (req, res) => {
+app.get('/demo01', (req, res) => {
   res.json({
     demoapp01: {
       status: 'ok'

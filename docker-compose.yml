@@ -1,14 +1,36 @@
 version: "3.8"
 services:
 
-  nginx:
-    image: nginx
+  nginx01:
+    build: ./nginx
+    image: niklaslind/nginx01    
+    restart: always
+    depends_on:
+      - demoapp01    
     ports:
-    - "80:80"
-    environment:
-    - NGINX_HOST=foobar.com
-    - NGINX_PORT=80
+      - 80:80
+    networks:
+      - dad_network
 
       
-  backend:
+  demoapp01:
+    build: ./nodejs/demoapp01
+    image: niklaslind/demoapp01
+    ports:
+      - 3001:3001
+    depends_on:
+      - backend01
+    networks:
+      - dad_network
+    
+      
+  backend01:
     image: redis:alpine
+    networks:
+      - dad_network
+
+
+networks:
+  dad_network:
+
+      
