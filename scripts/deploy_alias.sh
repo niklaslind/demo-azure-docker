@@ -20,6 +20,7 @@
 #   - Currently problems w azure pipeline as code => fallback on pure docker
 
 
+
 export DAD_HOME=~/worklocal/tyrens/demo-azure-docker
 export DOCKER_USERNAME=niklaslind
 export DOCKER_PASSWORD=${DOCKER_PASSWORD}
