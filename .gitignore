@@ -1,0 +1,8 @@
+node_modules
+*~
+#*
+.#*
+logs/*
+tambur-case/src/db.json
+
+.vscode/
