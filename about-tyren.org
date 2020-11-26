@@ -1,0 +1,142 @@
+#+TITLE: About Tyren
+
+
+* Utv/Release process
+
+** Commit
+*** Aways on feature-branch
+- name feature-branch w jira/ticket
+*** commit hooks
+- lint: npm install --save-dev eslint
+- husky: https://www.npmjs.com/package/husky
+- check commit-message: https://github.com/conventional-changelog/commitlint
+*** commit message template
+- https://www.conventionalcommits.org/en/v1.0.0/
+- https://chris.beams.io/posts/git-commit/
+
+
+
+
+** Branching
+
+*** pull request
+- config force pull request
+- gör review tillsammans
+- mall för review-kommentar
+  + kolla även commit-meddelanden
+  + kolla tester
+  + kolla lint
+  + kolla scanning för sårbarheter
+
+*** Branch strategies
+
+**** Gitlab flow
+- Use feature branches, no direct commits on master
+- Test all commits, not only ones on master
+- Run all the tests on all commits (if your tests run longer than 5 minutes have them run in parallel).
+- Perform code reviews before merges into master, not afterwards.
+- Deployments are automatic, based on branches or tags.
+- Tags are set by the user, not by CI.
+- Releases are based on tags.
+- Pushed commits are never rebased.
+- Everyone starts from master, and targets master.
+- Fix bugs in master first and release branches second.
+- Commit messages reflect intent.
+
+**** Github flow
+- simpler then above
+- deploy master immediately
+
+
+**** DONE git flow / one flow
+- more complicated then we need right now
+https://medium.com/@patrickporto/4-branching-workflows-for-git-30d0aaee7bf
+
+
+
+
+** Tagging
+*** Semantic versioning -ish
+- we do not use it exactly
+- 1.20.43.rc3
+*** tag releases manually
+- tag release over all projects => date-versioning
+
+
+** Build
+- Docker
+
+
+** Autotest
+- docker build step
+- integration-test over microservices (Behaviour Driven)
+- every night => slack morning standup
+- every commit
+
+
+** Scanning
+- sårbarheter
+- lint
+- oanvända/outdated paket
+- snyk / Node Security Platform / OWASP Dependency Check
+- sonarCube
+
+
+** Release
+- manually set relase-tag over all repos
+  - git-run
+- build release after tag
+- automatic release notes...
+
+
+
+
+
+
+
+
+* Teknik
+** TODO <2020-11-05 Thu> nli review befintlig kod
+** TODO <2020-11-09 Mon> em nli bjuder in till review-möte
+** Auth microservices
+
+
+
+* Docker@Azure
+se ./README.md
+
+# Step by Step init Azure and deploy containers to test and prod
+## Prepare
+
+    source scripts/deploy_alias.sh
+    ty.login
+
+
+## Init Azure
+
+    ty.init.createResourceGroup
+    ty.init.createContext
+
+## Deploy and test locally
+
+    ty.deploy.local
+    ty.test.local
+
+
+## Build and push
+
+    ty.deploy.build
+    ty.deploy.push
+
+## Deploy to test and prod
+
+    ty.deploy.test01
+    ty.deploy.prod
+
+
+
+* Azure Pipelines
+** X äger dessa
+** Complicated release pipelines: https://docs.microsoft.com/en-us/azure/devops/pipelines/release/?view=azure-devops
+Är detta nödvändigt i dagsläget?
+** Or Kubernetes if docker-centric?
