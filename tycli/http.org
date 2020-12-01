@@ -1,0 +1,229 @@
+#+TITLE: Http
+
+
+npm i express jsonwebtoken passport body-parser passport-local passport-http-bearer
+
+node app.js
+
+
+================================================================================
+
+#+BEGIN_SRC http :pretty
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "username": "pelle@kund1",
+    "password": "pelle"
+}
+
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+{
+  "user": {
+    "username": "pelle@kund1",
+    "licences": [
+      "lic1"
+    ],
+    "acl": [
+      {
+        "resource": "validator/kund1/jobs",
+        "permissions": [
+          "post"
+        ]
+      }
+    ],
+    "groups": [
+      "kund1"
+    ]
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoicGVsbGVAa3VuZDEiLCJsaWNlbmNlcyI6WyJsaWMxIl0sImFjbCI6W3sicmVzb3VyY2UiOiJ2YWxpZGF0b3Iva3VuZDEvam9icyIsInBlcm1pc3Npb25zIjpbInBvc3QiXX1dLCJncm91cHMiOlsia3VuZDEiXX0sImlhdCI6MTYwNjgwNzc3NywiZXhwIjoxNjA5Mzk5Nzc3fQ.hZzIiOkg6g35tvgvusKGpy7BkuC9J3zFXMHHFxBUNTM"
+}
+#+end_example
+
+--------------------------------------------------------------------------------
+
+#+BEGIN_SRC http :pretty
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "username": "lisa@kund2",
+    "password": "lisa"
+}
+
+
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+{
+  "user": {
+    "username": "lisa@kund2",
+    "licences": [
+      "lic2"
+    ],
+    "acl": [
+      {
+        "resource": "validator/kund2/jobs",
+        "permissions": [
+          "post"
+        ]
+      }
+    ],
+    "groups": [
+      "kund2"
+    ]
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoibGlzYUBrdW5kMiIsImxpY2VuY2VzIjpbImxpYzIiXSwiYWNsIjpbeyJyZXNvdXJjZSI6InZhbGlkYXRvci9rdW5kMi9qb2JzIiwicGVybWlzc2lvbnMiOlsicG9zdCJdfV0sImdyb3VwcyI6WyJrdW5kMiJdfSwiaWF0IjoxNjA2ODA3NTAwLCJleHAiOjE2MDkzOTk1MDB9.5S1MNWucnO9ooZvHWif1BcZFLKe887c7OffGYieC4Us"
+}
+#+end_example
+
+================================================================================
+
+#+BEGIN_SRC http :pretty
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "username": "autodesk",
+    "password": "autodesk"
+}
+
+
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+{
+  "user": {
+    "username": "autodesk",
+    "licences": [],
+    "acl": [
+      {
+        "resource": "validator/([^/]+)/jobs",
+        "permissions": [
+          "post"
+        ]
+      }
+    ],
+    "groups": []
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYXV0b2Rlc2siLCJsaWNlbmNlcyI6W10sImFjbCI6W3sicmVzb3VyY2UiOiJ2YWxpZGF0b3IvKFteL10rKS9qb2JzIiwicGVybWlzc2lvbnMiOlsicG9zdCJdfV0sImdyb3VwcyI6W119LCJpYXQiOjE2MDY4MDk2MDQsImV4cCI6MTYwOTQwMTYwNH0.h2266bGe_79O5jJC_ahKMeOOkMH2anZYpRkJVmEF-Po"
+}
+#+end_example
+
+================================================================================
+
+
+#+BEGIN_SRC http :pretty
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "username": "jörgen@tyrens",
+    "password": "jörgen"
+}
+
+
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+{
+  "user": {
+    "username": "jörgen@tyrens",
+    "licences": [],
+    "acl": [
+      {
+        "resource": "/validator/ifcrules",
+        "permissions": [
+          "post"
+        ]
+      }
+    ],
+    "groups": [
+      "admin"
+    ]
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiasO2cmdlbkB0eXJlbnMiLCJsaWNlbmNlcyI6W10sImFjbCI6W3sicmVzb3VyY2UiOiIvdmFsaWRhdG9yL2lmY3J1bGVzIiwicGVybWlzc2lvbnMiOlsicG9zdCJdfV0sImdyb3VwcyI6WyJhZG1pbiJdfSwiaWF0IjoxNjA2ODIyNDYwLCJleHAiOjE2MDk0MTQ0NjB9.Qz0CrVuLMbnLfoq5_ynFp0yfCKwME09p4a_LaLvfY7E"
+}
+#+end_example
+
+================================================================================
+
+
+#+BEGIN_SRC http :pretty
+POST http://localhost:4000/validator/kund1/jobs
+Content-Type: application/json
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoicGVsbGVAa3VuZDEiLCJsaWNlbmNlcyI6WyJsaWMxIl0sImFjbCI6W3sicmVzb3VyY2UiOiJ2YWxpZGF0b3Iva3VuZDEvam9icyIsInBlcm1pc3Npb25zIjpbInBvc3QiXX1dLCJncm91cHMiOlsia3VuZDEiXX0sImlhdCI6MTYwNjgwNzc3NywiZXhwIjoxNjA5Mzk5Nzc3fQ.hZzIiOkg6g35tvgvusKGpy7BkuC9J3zFXMHHFxBUNTM
+
+{
+    "job":"stuff"
+}
+
+#+END_SRC
+
+#+RESULTS:
+: {
+:   "message": "Job is enqueued"
+: }
+
+
+================================================================================
+
+#+BEGIN_SRC http :pretty
+POST http://localhost:4000/validator/kund2/jobs
+Content-Type: application/json
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoibGlzYUBrdW5kMiIsImxpY2VuY2VzIjpbImxpYzIiXSwiYWNsIjpbeyJyZXNvdXJjZSI6InZhbGlkYXRvci9rdW5kMi9qb2JzIiwicGVybWlzc2lvbnMiOlsicG9zdCJdfV0sImdyb3VwcyI6WyJrdW5kMiJdfSwiaWF0IjoxNjA2ODA3NTAwLCJleHAiOjE2MDkzOTk1MDB9.5S1MNWucnO9ooZvHWif1BcZFLKe887c7OffGYieC4Us
+
+{
+    "job":"stuff"
+}
+
+#+END_SRC
+
+#+RESULTS:
+: {
+:   "message": "Job is enqueued"
+: }
+
+================================================================================
+
+
+#+BEGIN_SRC http :pretty
+POST http://localhost:4000/validator/kund2/jobs
+Content-Type: application/json
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYXV0b2Rlc2siLCJsaWNlbmNlcyI6W10sImFjbCI6W3sicmVzb3VyY2UiOiJ2YWxpZGF0b3IvKFteL10rKS9qb2JzIiwicGVybWlzc2lvbnMiOlsicG9zdCJdfV0sImdyb3VwcyI6W119LCJpYXQiOjE2MDY4MDk2MDQsImV4cCI6MTYwOTQwMTYwNH0.h2266bGe_79O5jJC_ahKMeOOkMH2anZYpRkJVmEF-Po
+
+
+{
+    "job":"stuff"
+}
+
+#+END_SRC
+
+#+RESULTS:
+: {
+:   "msg": "Operation not allowed"
+: }
+
+================================================================================
+
+#+BEGIN_SRC http :pretty
+POST http://localhost:4000/validator/ifcrules
+Content-Type: application/json
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiasO2cmdlbkB0eXJlbnMiLCJsaWNlbmNlcyI6W10sImFjbCI6W3sicmVzb3VyY2UiOiIvdmFsaWRhdG9yL2lmY3J1bGVzIiwicGVybWlzc2lvbnMiOlsicG9zdCJdfV0sImdyb3VwcyI6WyJhZG1pbiJdfSwiaWF0IjoxNjA2ODIyNDYwLCJleHAiOjE2MDk0MTQ0NjB9.Qz0CrVuLMbnLfoq5_ynFp0yfCKwME09p4a_LaLvfY7E
+
+{
+    "rule":"stuff"
+}
+
+#+END_SRC
+
+#+RESULTS:
+: {
+:   "message": "Rule uploaded"
+: }
