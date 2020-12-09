@@ -18,7 +18,7 @@ services:
     build: ./service-01
     image: ty01/service01
     ports:
-      - 3002:3002
+      - 3001:3001
     networks:
       - dad_network
 

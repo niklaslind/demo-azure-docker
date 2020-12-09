@@ -16,6 +16,7 @@
     app.use(authorize.initialize());
 
     app.get('/authorize', [
+        (req, res, next) => {console.log('/authorize'); next()},
         authorize.authenticate(),
         authorize.authorize
     ]);

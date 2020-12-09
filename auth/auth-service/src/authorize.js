@@ -30,17 +30,17 @@
   function authorize(req, res, next) {
 
     const requested = {
-            resource: _.get(req, 'headers.x-original-uri', 'missing'),
-            operation: _.get(req, 'headers.x-original-method', 'missing')
-          }
-          userAcl = _.get(req, 'user.user.acl', []),
-          matchingAcl =
-          _(userAcl)
-          .filter( userAcl => {
-            const userAclResource = new RegExp(userAcl.resource);
-            return (userAclResource.test(requested.resource)) && (userAcl.permissions.includes(requested.operation));
-          })
-          .value();
+      resource: _.get(req, 'headers.x-original-uri', 'missing'),
+      operation: _.get(req, 'headers.x-original-method', 'missing').toLowerCase()
+    }
+    userAcl = _.get(req, 'user.user.acl', []),
+    matchingAcl =
+      _(userAcl)
+      .filter( userAcl => {
+        const userAclResource = new RegExp(userAcl.resource);
+        return (userAclResource.test(requested.resource)) && (userAcl.permissions.includes(requested.operation));
+      })
+      .value();
 
     console.log('checkAcl', requested, userAcl, matchingAcl, req.headers);
 

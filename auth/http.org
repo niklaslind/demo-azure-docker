@@ -34,7 +34,7 @@ Content-Type: application/json
       "kund1"
     ]
   },
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoicGVsbGVAa3VuZDEiLCJsaWNlbmNlcyI6WyJsaWMxIl0sImFjbCI6W3sicmVzb3VyY2UiOiIvdmFsaWRhdG9yL2t1bmQxL2pvYnMiLCJwZXJtaXNzaW9ucyI6WyJwb3N0Il19XSwiZ3JvdXBzIjpbImt1bmQxIl19LCJpYXQiOjE2MDc1MjczMDAsImV4cCI6MTYxMDExOTMwMH0.SyPuqeJERBGSIz_FfeGRVRGOrvIxt1R_4Ez9D3rRX3U"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoicGVsbGVAa3VuZDEiLCJsaWNlbmNlcyI6WyJsaWMxIl0sImFjbCI6W3sicmVzb3VyY2UiOiIvdmFsaWRhdG9yL2t1bmQxL2pvYnMiLCJwZXJtaXNzaW9ucyI6WyJwb3N0Il19XSwiZ3JvdXBzIjpbImt1bmQxIl19LCJpYXQiOjE2MDc1MjkyMjUsImV4cCI6MTYxMDEyMTIyNX0.SA5dnbhnp1PaNGqKX8Spe4eZ3cEMsciTu6yFJHGeoBo"
 }
 #+end_example
 
@@ -62,32 +62,16 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjo
 
 
 #+BEGIN_SRC http :pretty
-GET http://localhost/testservice
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoicGVsbGVAa3VuZDEiLCJsaWNlbmNlcyI6WyJsaWMxIl0sImFjbCI6W3sicmVzb3VyY2UiOiIvdmFsaWRhdG9yL2t1bmQxL2pvYnMiLCJwZXJtaXNzaW9ucyI6WyJwb3N0Il19XSwiZ3JvdXBzIjpbImt1bmQxIl19LCJpYXQiOjE2MDc1MjYwMzksImV4cCI6MTYxMDExODAzOX0.3M3WSkt2sTXVMskZlnNRD55aIPX09wLE_pO_lnEdde8
+POST http://localhost/validator/kund1/jobs
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoicGVsbGVAa3VuZDEiLCJsaWNlbmNlcyI6WyJsaWMxIl0sImFjbCI6W3sicmVzb3VyY2UiOiIvdmFsaWRhdG9yL2t1bmQxL2pvYnMiLCJwZXJtaXNzaW9ucyI6WyJwb3N0Il19XSwiZ3JvdXBzIjpbImt1bmQxIl19LCJpYXQiOjE2MDc1MjkyMjUsImV4cCI6MTYxMDEyMTIyNX0.SA5dnbhnp1PaNGqKX8Spe4eZ3cEMsciTu6yFJHGeoBo
+
+{
+    "data": "test"
+}
 
 #+END_SRC
 
 #+RESULTS:
-#+begin_example
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
-
-<html>
-<head>
-  <meta name="generator" content=
-  "HTML Tidy for Mac OS X (vers 31 October 2006 - Apple Inc. build 16.5), see www.w3.org">
-
-  <title>500 Internal Server Error</title>
-</head>
-
-<body>
-  <center>
-    <h1>500 Internal Server Error</h1>
-  </center>
-  <hr>
-
-  <center>
-    nginx/1.15.5
-  </center>
-</body>
-</html>
-#+end_example
+: {
+:   "message": "Job is enqueued"
+: }
