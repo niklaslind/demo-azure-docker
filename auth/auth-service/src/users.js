@@ -115,10 +115,16 @@
         }
     };
 
+
+    function getAllUsers() {
+        return settings.users;
+    }
+
     initUsers(settings);
-    console.log('Done init users in system:', JSON.stringify(settings.users, null, 4));
+    console.log('Done init users in system:', JSON.stringify(getAllUsers(), null, 4));
 
     module.exports = {
-        getAuthenticatedUser: getAuthenticatedUser
+        getAuthenticatedUser: getAuthenticatedUser,
+        getAllUsers: getAllUsers
     }
 })()
