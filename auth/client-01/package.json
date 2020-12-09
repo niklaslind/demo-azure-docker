@@ -1,0 +1,16 @@
+{
+  "name": "client-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tycli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "cli": "1.0.1",
+    "lodash": "^4.17.20",
+    "superagent": "^6.1.0"
+  }
+}
