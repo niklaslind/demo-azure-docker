@@ -11,11 +11,14 @@
 
     app.get('/users', getAllUsers)
 
-    app.post('/authenticate', authenticate.getToken);
-
-    app.post('/authorize', authenticate.getToken);
+    app.post('/signin', authenticate.getToken);
 
     app.use(authorize.initialize());
+
+    app.get('/authorize', [
+        authorize.authenticate(),
+        authorize.authorize
+    ]);
 
 
     function getAllUsers(req, res, next) {

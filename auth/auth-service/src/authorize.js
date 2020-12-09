@@ -27,30 +27,27 @@
   passport.use(strategy);
 
 
+  function authorize(req, res, next) {
 
-
-  function checkAcl(req, res, next) {
-    console.log('checkAcl', req.method, req.path);
-    const group = req.params.group,
-          required = {
-            resource: req.path,
-            operation: req.method.toLowerCase()
-          },
+    const requested = {
+            resource: _.get(req, 'headers.x-original-uri', 'missing'),
+            operation: _.get(req, 'headers.x-original-method', 'missing')
+          }
           userAcl = _.get(req, 'user.user.acl', []),
           matchingAcl =
           _(userAcl)
           .filter( userAcl => {
             const userAclResource = new RegExp(userAcl.resource);
-            return (userAclResource.test(required.resource)) && (userAcl.permissions.includes(required.operation));
+            return (userAclResource.test(requested.resource)) && (userAcl.permissions.includes(requested.operation));
           })
           .value();
 
-    console.log('checkAcl', required, userAcl, matchingAcl);
+    console.log('checkAcl', requested, userAcl, matchingAcl, req.headers);
 
     if (_.isEmpty(matchingAcl))
       return res.status(401).json({msg: "Operation not allowed"});
-
-    next();
+    else
+      return res.status(200).json({msg: "ok"});
   }
 
 
@@ -63,7 +60,7 @@
       return passport.authenticate("jwt", params.secretOrKey);
     },
 
-    checkAcl: checkAcl
+    authorize: authorize
 
   }
 
