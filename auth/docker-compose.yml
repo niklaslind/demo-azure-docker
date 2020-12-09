@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+
+  nginx:
+    build: ./nginx
+    image: ty01/nginx
+    restart: always
+    depends_on:
+      - service-01
+      - auth-service
+    ports:
+      - 80:80
+    networks:
+      - dad_network
+
+      
+  service-01:
+    build: ./service-01
+    image: ty01/service01
+    ports:
+      - 3002:3002
+    networks:
+      - dad_network
+
+
+  auth-service:
+    build: ./auth-service
+    image: ty01/authservice
+    ports:
+      - 4000:4000
+    networks:
+      - dad_network
+
+
+networks:
+  dad_network:
+
+      
