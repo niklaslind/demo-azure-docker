@@ -29,7 +29,7 @@ Content-Type: application/json
     ],
     "acl": [
       {
-        "resource": "validator/kund1/jobs",
+        "resource": "/validator/kund1/jobs",
         "permissions": [
           "post"
         ]
@@ -39,7 +39,7 @@ Content-Type: application/json
       "kund1"
     ]
   },
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoicGVsbGVAa3VuZDEiLCJsaWNlbmNlcyI6WyJsaWMxIl0sImFjbCI6W3sicmVzb3VyY2UiOiJ2YWxpZGF0b3Iva3VuZDEvam9icyIsInBlcm1pc3Npb25zIjpbInBvc3QiXX1dLCJncm91cHMiOlsia3VuZDEiXX0sImlhdCI6MTYwNjgwNzc3NywiZXhwIjoxNjA5Mzk5Nzc3fQ.hZzIiOkg6g35tvgvusKGpy7BkuC9J3zFXMHHFxBUNTM"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoicGVsbGVAa3VuZDEiLCJsaWNlbmNlcyI6WyJsaWMxIl0sImFjbCI6W3sicmVzb3VyY2UiOiIvdmFsaWRhdG9yL2t1bmQxL2pvYnMiLCJwZXJtaXNzaW9ucyI6WyJwb3N0Il19XSwiZ3JvdXBzIjpbImt1bmQxIl19LCJpYXQiOjE2MDY4MzI3NTgsImV4cCI6MTYwOTQyNDc1OH0.6eYqjYEuUYMRa1qNSoR7lF7fNUGwDfXi4xmRszRepAU"
 }
 #+end_example
 
@@ -67,7 +67,7 @@ Content-Type: application/json
     ],
     "acl": [
       {
-        "resource": "validator/kund2/jobs",
+        "resource": "/validator/kund2/jobs",
         "permissions": [
           "post"
         ]
@@ -77,7 +77,7 @@ Content-Type: application/json
       "kund2"
     ]
   },
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoibGlzYUBrdW5kMiIsImxpY2VuY2VzIjpbImxpYzIiXSwiYWNsIjpbeyJyZXNvdXJjZSI6InZhbGlkYXRvci9rdW5kMi9qb2JzIiwicGVybWlzc2lvbnMiOlsicG9zdCJdfV0sImdyb3VwcyI6WyJrdW5kMiJdfSwiaWF0IjoxNjA2ODA3NTAwLCJleHAiOjE2MDkzOTk1MDB9.5S1MNWucnO9ooZvHWif1BcZFLKe887c7OffGYieC4Us"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoibGlzYUBrdW5kMiIsImxpY2VuY2VzIjpbImxpYzIiXSwiYWNsIjpbeyJyZXNvdXJjZSI6Ii92YWxpZGF0b3Iva3VuZDIvam9icyIsInBlcm1pc3Npb25zIjpbInBvc3QiXX1dLCJncm91cHMiOlsia3VuZDIiXX0sImlhdCI6MTYwNjgzMjg2MCwiZXhwIjoxNjA5NDI0ODYwfQ.2rwPkZV06wdlfUyDUXFWHT-21KD3C_dkQg6thq6WDiw"
 }
 #+end_example
 
@@ -156,9 +156,12 @@ Content-Type: application/json
 
 
 #+BEGIN_SRC http :pretty
-POST http://localhost:4000/validator/kund1/jobs
+POST http://localhost:4000/validator/kund2/jobs
 Content-Type: application/json
-x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoicGVsbGVAa3VuZDEiLCJsaWNlbmNlcyI6WyJsaWMxIl0sImFjbCI6W3sicmVzb3VyY2UiOiJ2YWxpZGF0b3Iva3VuZDEvam9icyIsInBlcm1pc3Npb25zIjpbInBvc3QiXX1dLCJncm91cHMiOlsia3VuZDEiXX0sImlhdCI6MTYwNjgwNzc3NywiZXhwIjoxNjA5Mzk5Nzc3fQ.hZzIiOkg6g35tvgvusKGpy7BkuC9J3zFXMHHFxBUNTM
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoibGlzYUBrdW5kMiIsImxpY2VuY2VzIjpbImxpYzIiXSwiYWNsIjpbeyJyZXNvdXJjZSI6Ii92YWxpZGF0b3Iva3VuZDIvam9icyIsInBlcm1pc3Npb25zIjpbInBvc3QiXX1dLCJncm91cHMiOlsia3VuZDIiXX0sImlhdCI6MTYwNjgzMjg2MCwiZXhwIjoxNjA5NDI0ODYwfQ.2rwPkZV06wdlfUyDUXFWHT-21KD3C_dkQg6thq6WDiw
+
+
+
 
 {
     "job":"stuff"
@@ -194,7 +197,7 @@ x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoi
 
 
 #+BEGIN_SRC http :pretty
-POST http://localhost:4000/validator/kund2/jobs
+POST http://localhost:4000/validator/kund1/jobs
 Content-Type: application/json
 x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYXV0b2Rlc2siLCJsaWNlbmNlcyI6W10sImFjbCI6W3sicmVzb3VyY2UiOiJ2YWxpZGF0b3IvKFteL10rKS9qb2JzIiwicGVybWlzc2lvbnMiOlsicG9zdCJdfV0sImdyb3VwcyI6W119LCJpYXQiOjE2MDY4MDk2MDQsImV4cCI6MTYwOTQwMTYwNH0.h2266bGe_79O5jJC_ahKMeOOkMH2anZYpRkJVmEF-Po
 
@@ -207,7 +210,7 @@ x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoi
 
 #+RESULTS:
 : {
-:   "msg": "Operation not allowed"
+:   "message": "Job is enqueued"
 : }
 
 ================================================================================
