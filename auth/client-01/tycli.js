@@ -18,7 +18,7 @@ function writeTokenToFile(token, filename) {
         JSON.stringify({'x-access-token': token}),
         function (err) {
             if (err) throw err;
-            console.log('Saved!');
+            console.log('Token saved to file', filename);
         });
 }
 
