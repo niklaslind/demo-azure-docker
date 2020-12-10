@@ -12,6 +12,15 @@ const options = cli.parse(
     }
 );
 
+function writeTokenToFile(token, filename) {
+    fs.writeFile(
+        filename,
+        JSON.stringify({'x-access-token': token}),
+        function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+        });
+}
 
 if (options.signin) {
 
@@ -27,16 +36,7 @@ if (options.signin) {
             if (err)
                 console.log('Could not authenticate');
             else {
-                fs.writeFile(`token.${options.username}`,
-                             JSON.stringify(
-                                 {
-                                     'x-access-token': res.body['token']
-                                 }
-                             ),
-                             function (err) {
-                                 if (err) throw err;
-                                 console.log('Saved!');
-                             });
+                writeTokenToFile( res.body['token'], `token.${options.username}`);
             }
         });
 }
